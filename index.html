@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌸 Daily Quote Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-bg: #fcefee;
+      --card-bg: #fffdfd;
+      --accent: #f4aab9;
+      --text: #333;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-color: var(--main-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      transition: background-color 0.6s ease;
+    }
+
+    .container {
+      background: var(--card-bg);
+      border: 2px solid var(--accent);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      position: relative;
+      transition: background 0.5s ease, border 0.5s ease;
+    }
+
+    h1 {
+      font-size: 26px;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    #quote {
+      font-style: italic;
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    #author {
+      font-weight: 600;
+      margin-bottom: 30px;
+      color: var(--text);
+    }
+
+    button {
+      background-color: var(--accent);
+      color: white;
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #d48295;
+    }
+
+    .icon {
+      position: absolute;
+      font-size: 24px;
+      opacity: 0.4;
+    }
+
+    .icon.star {
+      top: 10px;
+      left: 20px;
+    }
+
+    .icon.heart {
+      bottom: 10px;
+      right: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="quoteBox">
+    <div class="icon star">✨</div>
+    <div class="icon heart">💖</div>
+    <h1>🌼 Daily Reminder 🌼</h1>
+    <div id="quote">"Take care of your mind and body."</div>
+    <div id="author">– You 🌸</div>
+    <button onclick="newQuote()">Show Another Quote</button>
+  </div>
+
+  <script>
+    const quotes = [
+      { text: "You can’t just live in your own little world.", author: "– Kim Taehyung" },
+      { text: "Stay hungry, stay foolish.", author: "– Steve Jobs" },
+      { text: "Effort never betrays you.", author: "– Jeon Jungkook" },
+      { text: "Make it simple, but significant.", author: "– Don Draper" },
+      { text: "Nothing is impossible, the word itself says 'I’m possible'!", author: "– Audrey Hepburn" },
+      { text: "This too shall pass.", author: "– Persian Proverb" },
+      { text: "Breathe. Let it go. You’re doing fine.", author: "– Unknown" },
+      { text: "You are made of stars and strength.", author: "– Someone Lovely" },
+      { text: "Progress over perfection.", author: "– A gentle reminder" }
+    ];
+
+    const colors = [
+      { bg: "#fcefee", card: "#fff0f5", accent: "#f4aab9", text: "#333" },
+      { bg: "#e5f4f9", card: "#ffffff", accent: "#9ed1e3", text: "#222" },
+      { bg: "#fff6e5", card: "#fef9f3", accent: "#ffcf91", text: "#443" },
+      { bg: "#f0eaff", card: "#ffffff", accent: "#c7a1ff", text: "#2a2a2a" },
+      { bg: "#e6f5e6", card: "#ffffff", accent: "#9fd6a5", text: "#2d2d2d" },
+    ];
+
+    function newQuote() {
+      const randQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      const randColor = colors[Math.floor(Math.random() * colors.length)];
+
+      document.getElementById("quote").innerText = `"${randQuote.text}"`;
+      document.getElementById("author").innerText = randQuote.author;
+
+      // Apply aesthetic color change
+      document.documentElement.style.setProperty('--main-bg', randColor.bg);
+      document.documentElement.style.setProperty('--card-bg', randColor.card);
+      document.documentElement.style.setProperty('--accent', randColor.accent);
+      document.documentElement.style.setProperty('--text', randColor.text);
+    }
+  </script>
+</body>
+</html>
